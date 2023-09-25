@@ -1,4 +1,4 @@
-﻿-- drop tables if exist
+-- drop tables if exist
 
 drop table if exists contacts;
 drop table if exists category;
@@ -20,11 +20,11 @@ select * from contacts
 
 CREATE TABLE campaign (
     cf_id INT NOT NULL,
-    contact_id INT NOT NULL,
+    contact_id INT NOT NULL ,
 	company_name VARCHAR(50) NOT NULL,
     description VARCHAR (150)  NOT NULL,
-	goal INT NOT NULL,
-	pledged INT NOT NULL,
+	goal FLOAT NOT NULL,
+	pledged FLOAT NOT NULL,
 	outcome VARCHAR (20) NOT NULL,
 	backers_count INT NOT NULL,
 	country VARCHAR(50) NOT NULL,
@@ -33,10 +33,13 @@ CREATE TABLE campaign (
 	end_date DATE,
 	category_id VARCHAR (50) NOT NULL,
 	subcategory_id VARCHAR (50) NOT NULL,
-	primary key (cf_id)
+	primary key (cf_id),
+	foreign key(contact_id) references contacts(contact_id),
+	foreign key(category_id) references category(category_id),
+	foreign key(subcategory_id) references subcategory(subcategory_id)
 );
 
-select * from campaign
+select * from campaign;
 
 
 
